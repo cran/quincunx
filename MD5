@@ -1,4 +1,4 @@
-fb3ce4684e9bb70ba5bf4c268e313179 *DESCRIPTION
+e2244cd9e6fce2e424ff774956d61f16 *DESCRIPTION
 64b7c15e1bf6c360d7fc1229cfad4632 *LICENSE
 ca5dc0bf3024cb4d704c1fb990cc9d3d *NAMESPACE
 0a7459de2648038871e6449d52139d8b *R/ancestry_categories.R
@@ -49,7 +49,7 @@ aae1484c1f0c6bc364fcd401310be2c1 *R/parse-sample_sets.R
 5185452a08d0b929f90cdf36af437dbc *R/parse-trait_categories.R
 c84eb99d4784aa4a569f43c6a85a885f *R/parse-traits.R
 248da5be076881a9cad9ecf39e7ce881 *R/read_file_column_names.R
-466e0938d6a1cb8f2b929b80db317574 *R/read_pgs_scoring_file.R
+41cd98b23280c518319bbf81b5829de6 *R/read_pgs_scoring_file.R
 16574feb99ce985a7221d4302014478a *R/relocate_metadata_cols.R
 d3a8578d2461dd44ebb9ed3373a23fad *R/remap_id.R
 4d4bb0ad25ca373e74bdb15b214a3d4d *R/request.R
@@ -66,8 +66,8 @@ c8ec7dc3eed9d8cf379696087793a4cc *R/unwrap_sample.R
 65cef5e0674056f6fc07dd2b3ca85c13 *R/utils-pipe.R
 783256f54159b12b1fdf51093863a370 *R/warnings.R
 4de359c0da0a1806e21e791300bfabdf *R/write_xlsx.R
-0d5b13b8f12450fe9825ec19d97edb85 *README.md
-b11a4dd58304dae19817ed40d9b6bf75 *build/partial.rdb
+8f01aa676b3cab3f0c8bfd8d57022c86 *README.md
+29328d830b0f7395d5d50f3c17a380d1 *build/partial.rdb
 313afe85dbeebf70f23f190c299d4cbf *data/ancestry_categories.rda
 6f635db1787318f63f3e6c6f5c53ebae *data/stages.rda
 3f22b76bfc6895e2f6286efa19b05153 *inst/CITATION

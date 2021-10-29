@@ -1,7 +1,7 @@
 Package: quincunx
 Type: Package
 Title: REST API Client for the 'PGS' Catalog
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(
     person(given = "Ramiro", family = "Magno",
       email = "ramiro.magno@gmail.com",
@@ -55,11 +55,11 @@ Depends: R (>= 2.10)
 URL: https://github.com/maialab/quincunx
 BugReports: https://github.com/maialab/quincunx/issues
 NeedsCompilation: no
-Packaged: 2021-10-07 20:55:30 UTC; rmagno
+Packaged: 2021-10-29 19:38:34 UTC; rmagno
 Author: Ramiro Magno [aut, cre] (<https://orcid.org/0000-0001-5226-3441>),
   Isabel Duarte [aut] (<https://orcid.org/0000-0003-0060-2936>),
   Ana-Teresa Maia [aut] (<https://orcid.org/0000-0002-0454-9207>),
   CINTESIS [cph, fnd]
 Maintainer: Ramiro Magno <ramiro.magno@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-10-08 07:10:02 UTC
+Date/Publication: 2021-10-29 22:00:11 UTC
