@@ -8,7 +8,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/quincunx)](https://CRAN.R-project.org/package=quincunx)
 [![License:
-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![](https://img.shields.io/badge/doi-10.1093/bioinformatics/btab522-blue.svg)](https://doi.org/10.1093/bioinformatics/btab522)
 <!-- badges: end -->
@@ -20,7 +20,7 @@ scores](https://en.wikipedia.org/wiki/Polygenic_score) and associated
 metadata describing their development and respective assessment.
 
 Browse the online documentation at
-[maialab.org/quincunx](https://maialab.org/quincunx/) to get started.
+[rmagno.eu/quincunx](https://rmagno.eu/quincunx/) to get started.
 
 ## Installation
 
@@ -80,14 +80,14 @@ citation('quincunx')
 Also, please do not forget to cite the authors behind the original
 studies and the papers associated with the PGS Catalog project:
 
--   Lambert, S.A., Gil, L., Jupp, S. et al. The Polygenic Score Catalog
-    as an open database for reproducibility and systematic evaluation.
-    Nat Genet 53, 420–425 (2021). doi:
-    [10.1038/s41588-021-00783-5](https://doi.org/10.1038/s41588-021-00783-5)
--   Wand, H., Lambert, S.A., Tamburro, C. et al. Improving reporting
-    standards for polygenic scores in risk prediction studies. Nature
-    591, 211–219 (2021). doi:
-    [10.1038/s41586-021-03243-6](https://doi.org/10.1038/s41586-021-03243-6)
+- Lambert, S.A., Gil, L., Jupp, S. et al. The Polygenic Score Catalog as
+  an open database for reproducibility and systematic evaluation. Nat
+  Genet 53, 420–425 (2021). doi:
+  [10.1038/s41588-021-00783-5](https://doi.org/10.1038/s41588-021-00783-5)
+- Wand, H., Lambert, S.A., Tamburro, C. et al. Improving reporting
+  standards for polygenic scores in risk prediction studies. Nature 591,
+  211–219 (2021). doi:
+  [10.1038/s41586-021-03243-6](https://doi.org/10.1038/s41586-021-03243-6)
 
 ## Terms of use
 
@@ -99,7 +99,7 @@ of Use](https://www.ebi.ac.uk/about/terms-of-use/).
 
 Please note that the `{quincunx`} project is released with a
 [Contributor Code of
-Conduct](https://maialab.org/quincunx/CODE_OF_CONDUCT.html). By
+Conduct](https://rmagno.eu/quincunx/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.
 
 ## Acknowledgements
