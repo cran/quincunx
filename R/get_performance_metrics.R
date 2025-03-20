@@ -33,14 +33,17 @@ get_performance_by_ppm_id <- function(ppm_id, limit = 20L, verbose = FALSE, warn
   resource <- '/rest/performance'
   resource_urls <- sprintf("%s/%s", resource, ppm_id)
 
+  get_performance <- purrr::slowly(f = get_performance, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_performance,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -49,14 +52,17 @@ get_performance_by_pgs_id <- function(pgs_id, limit = 20L, verbose = FALSE, warn
   resource <- '/rest/performance/search'
   resource_urls <- sprintf("%s?pgs_id=%s", resource, pgs_id)
 
+  get_performance <- purrr::slowly(f = get_performance, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_performance,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -130,7 +136,7 @@ get_performance_metrics <- function(
     get_performance_by_ppm_id(ppm_id = ppm_id,
                         verbose = verbose,
                         warnings = warnings,
-                        progress_bar = progress_bar) %>%
+                        progress_bar = progress_bar) |>
     coerce_to_s4_performance_metrics()
 
   if (!rlang::is_null(pgs_id))
@@ -138,7 +144,7 @@ get_performance_metrics <- function(
     get_performance_by_pgs_id(pgs_id = pgs_id,
                           verbose = verbose,
                           warnings = warnings,
-                          progress_bar = progress_bar) %>%
+                          progress_bar = progress_bar) |>
     coerce_to_s4_performance_metrics()
 
   # If no criteria have been passed, i.e. all are NULL then got fetch all

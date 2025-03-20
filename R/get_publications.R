@@ -44,14 +44,17 @@ get_publication_by_pgp_id <-
   resource <- '/rest/publication'
   resource_urls <- sprintf("%s/%s", resource, pgp_id)
 
+  get_publication <- purrr::slowly(f = get_publication, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_publication,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -66,14 +69,17 @@ get_publication_by_pgs_id <-
   resource <- '/rest/publication/search'
   resource_urls <- sprintf("%s?pgs_id=%s", resource, pgs_id)
 
+  get_publication <- purrr::slowly(f = get_publication, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_publication,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -89,14 +95,17 @@ get_publication_by_pubmed_id <-
   resource <- '/rest/publication/search'
   resource_urls <- sprintf("%s?pmid=%s", resource, pubmed_id)
 
+  get_publication <- purrr::slowly(f = get_publication, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_publication,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -113,14 +122,17 @@ get_publication_by_author <-
   resource <- '/rest/publication/search'
   resource_urls <- sprintf("%s?author=%s", resource, author)
 
+  get_publication <- purrr::slowly(f = get_publication, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_publication,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -204,7 +216,7 @@ get_publications <- function(pgp_id = NULL,
       verbose = verbose,
       warnings = warnings,
       progress_bar = progress_bar
-    ) %>%
+    ) |>
     coerce_to_s4_publications()
 
   if (!rlang::is_null(pgs_id))
@@ -212,7 +224,7 @@ get_publications <- function(pgp_id = NULL,
     get_publication_by_pgs_id(pgs_id = pgs_id,
                               verbose = verbose,
                               warnings = warnings,
-                              progress_bar = progress_bar) %>%
+                              progress_bar = progress_bar) |>
     coerce_to_s4_publications()
 
   if (!rlang::is_null(pubmed_id))
@@ -220,7 +232,7 @@ get_publications <- function(pgp_id = NULL,
     get_publication_by_pubmed_id(pubmed_id = pubmed_id,
                                  verbose = verbose,
                                  warnings = warnings,
-                                 progress_bar = progress_bar) %>%
+                                 progress_bar = progress_bar) |>
     coerce_to_s4_publications()
 
   if (!rlang::is_null(author))
@@ -228,7 +240,7 @@ get_publications <- function(pgp_id = NULL,
     get_publication_by_author(author = author,
                               verbose = verbose,
                               warnings = warnings,
-                              progress_bar = progress_bar) %>%
+                              progress_bar = progress_bar) |>
     coerce_to_s4_publications()
 
   # If no criteria have been passed, i.e. all are NULL then got fetch all

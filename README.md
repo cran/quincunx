@@ -8,9 +8,9 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/quincunx)](https://CRAN.R-project.org/package=quincunx)
 [![License:
-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit/)
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![](https://img.shields.io/badge/doi-10.1093/bioinformatics/btab522-blue.svg)](https://doi.org/10.1093/bioinformatics/btab522)
+[![10.1093/bioinformatics/btab522](https://img.shields.io/badge/doi-10.1093/bioinformatics/btab522-blue.svg)](https://doi.org/10.1093/bioinformatics/btab522)
 <!-- badges: end -->
 
 The goal of `{quincunx}` is to provide programmatic access to the
@@ -31,15 +31,11 @@ Install `{quincunx}` from CRAN:
 install.packages("quincunx")
 ```
 
-You can instead install the development version of `{quincunx}` by
-setting [Ramiro Magno’s universe](https://ramiromagno.r-universe.dev/)
-repository:
+You can instead install the development version with:
 
 ``` r
-options(repos = c(ramiromagno = 'https://ramiromagno.r-universe.dev',
-                CRAN = 'https://cloud.r-project.org'))
-
-install.packages('quincunx')
+# install.packages("pak")
+pak::pak("ramiromagno/quincunx")
 ```
 
 ## Cheatsheet
@@ -55,7 +51,6 @@ To generate a citation for this publication from within R:
 
 ``` r
 citation('quincunx')
-#> 
 #> To cite quincunx in publications use:
 #> 
 #>   Ramiro Magno, Isabel Duarte, Ana-Teresa Maia, quincunx: an R package
@@ -70,6 +65,8 @@ citation('quincunx')
 #>     author = {Ramiro Magno and Isabel Duarte and Ana-Teresa Maia},
 #>     journal = {Bioinformatics},
 #>     year = {2021},
+#>     volume = {38},
+#>     number = {1},
 #>     pages = {1--3},
 #>     url = {https://doi.org/10.1093/bioinformatics/btab522},
 #>   }

@@ -20,14 +20,17 @@ get_sample_sets_by_pss_id <- function(pss_id, limit = 20L, verbose = FALSE, warn
   resource <- '/rest/sample_set'
   resource_urls <- sprintf("%s/%s", resource, pss_id)
 
+  get_sample_set <- purrr::slowly(f = get_sample_set, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_sample_set,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -36,14 +39,17 @@ get_sample_sets_by_pgs_id <- function(pgs_id, limit = 20L, verbose = FALSE, warn
   resource <- '/rest/sample_set/search'
   resource_urls <- sprintf("%s?pgs_id=%s", resource, pgs_id)
 
+  get_sample_set <- purrr::slowly(f = get_sample_set, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_sample_set,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -123,7 +129,7 @@ get_sample_sets <- function(
     get_sample_sets_by_pss_id(pss_id = pss_id,
                               verbose = verbose,
                               warnings = warnings,
-                              progress_bar = progress_bar) %>%
+                              progress_bar = progress_bar) |>
     coerce_to_s4_sample_sets()
 
   if (!rlang::is_null(pgs_id))
@@ -131,7 +137,7 @@ get_sample_sets <- function(
     get_sample_sets_by_pgs_id(pgs_id = pgs_id,
                               verbose = verbose,
                               warnings = warnings,
-                              progress_bar = progress_bar) %>%
+                              progress_bar = progress_bar) |>
     coerce_to_s4_sample_sets()
 
   # If no criteria have been passed, i.e. all are NULL then got fetch all

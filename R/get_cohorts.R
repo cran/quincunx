@@ -21,14 +21,17 @@ get_cohort_by_cohort_symbol <- function(cohort_symbol, limit = 20L, verbose = FA
   cohort_symbol <- purrr::map_chr(cohort_symbol, utils::URLencode, reserved = TRUE)
   resource_urls <- sprintf("%s/%s", resource, cohort_symbol)
 
+  get_cohort <- purrr::slowly(f = get_cohort, rate = purrr::rate_delay(pause = delay()))
+
   purrr::map(
     resource_urls,
     get_cohort,
     limit = limit,
     warnings = warnings,
     verbose = verbose,
-    progress_bar = progress_bar
-  ) %>%
+    progress_bar = FALSE,
+    .progress = progress_bar
+  ) |>
     purrr::pmap(dplyr::bind_rows)
 }
 
@@ -81,14 +84,15 @@ get_cohorts <- function(
     stop("warnings must be either TRUE or FALSE")
 
   if (!rlang::is_null(cohort_symbol)) {
-    get_cohort_by_cohort_symbol(
-      cohort_symbol = cohort_symbol,
-      verbose = verbose,
-      warnings = warnings,
-      progress_bar = progress_bar
-    ) %>%
-      coerce_to_s4_cohorts() %>%
-      return()
+    return(
+      get_cohort_by_cohort_symbol(
+        cohort_symbol = cohort_symbol,
+        verbose = verbose,
+        warnings = warnings,
+        progress_bar = progress_bar
+      ) |>
+        coerce_to_s4_cohorts()
+    )
 
   } else {
     return(coerce_to_s4_cohorts(get_cohort_all(verbose = verbose, warnings = warnings, progress_bar = progress_bar)))

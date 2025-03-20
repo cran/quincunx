@@ -33,7 +33,7 @@ memoised_GET <- memoise::memoise(httr::GET)
 #' @return A named list of four elements:
 #' \describe{
 #' \item{resource}{The URL endpoint.}
-#' \item{code}{\href{https://tinyurl.com/8yqvhwf}{HTTP
+#' \item{code}{\href{https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}{HTTP
 #' status code}.}
 #' \item{message}{A string describing the status of the response obtained:
 #' \code{'OK'} if successful or a description of the error.}
@@ -101,7 +101,7 @@ request <- function(resource_url,
 #' @return A list four named elements:
 #' \describe{
 #' \item{resource}{The URL endpoint.}
-#' \item{code}{\href{https://tinyurl.com/8yqvhwf}{HTTP
+#' \item{code}{\href{https://en.wikipedia.org/wiki/List_of_HTTP_status_codes}{HTTP
 #' status code}.}
 #' \item{message}{A string describing the status of the response obtained. It is
 #' "OK" if everything went OK or some other string describing the problem.}
@@ -177,10 +177,11 @@ request_all <- function(resource_url = "/",
     request2 <- request
   }
 
+  request2_slowly <- purrr::slowly(request2, rate = purrr::rate_delay(pause = delay()))
 
   # Each element of this list is a returned object from a page
   objs <-purrr::map(resource_url_by_page,
-                    request2,
+                    request2_slowly,
                     base_url = base_url,
                     verbose = verbose,
                     warnings = warnings)
